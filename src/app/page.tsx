@@ -1,9 +1,19 @@
+import Navbar from "@/components/landing/Navbar"
+import Hero from "@/components/landing/Hero"
+import Footer from "@/components/landing/Footer"
+import { Features } from "@/components/landing/Features";
+import { HowItWorks } from "@/components/landing/HowItWorks";
+import { AuditSection } from "@/components/audit/AuditSection";
 
 export default function Home() {
   return (
-    <>
-      <h1>Stop Overspending on AI Tools</h1>
-      <h2>Audit your AI stack in under 60 seconds and discover unnecessary spend across ChatGPT, Claude, Cursor, Copilot, and more.</h2>
-    </>
+    <main>
+      <Navbar />
+      <Hero />
+      <Features/>
+      <HowItWorks/>
+      <AuditSection/>
+      <Footer/>
+    </main>
   );
 }

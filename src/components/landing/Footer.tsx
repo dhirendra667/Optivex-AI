@@ -3,10 +3,10 @@ import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa"
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-black text-white">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 py-16 md:grid-cols-4">
+    <footer className="border-t border-white/5 py-12">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 py-16 sm:grid-cols-2 lg:grid-cols-4">
         {/* Brand */}
-        <div className="md:col-span-2">
+        <div className="sm:col-span-2">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">
               <Sparkles className="h-5 w-5 text-violet-400" />
@@ -115,7 +115,7 @@ export default function Footer() {
 
       {/* Bottom */}
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 text-sm text-white/50 md:flex-row">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-6 text-center text-sm text-white/50 md:flex-row md:text-left">
           <p>© 2026 Optivex AI. All rights reserved.</p>
 
           <p>Built for AI workflow optimization and spend intelligence.</p>
