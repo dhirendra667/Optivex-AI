@@ -4,6 +4,7 @@
 
 import { ChatMessage as ChatMsgType } from "@/types/api";
 import { cn } from "@/lib/utils/helpers";
+import { Sparkles } from "lucide-react"
 
 export function ChatMessage({ message }: { message: ChatMsgType }) {
   const isUser = message.role === "user";
@@ -13,7 +14,7 @@ export function ChatMessage({ message }: { message: ChatMsgType }) {
       {/* Avatar */}
       {!isUser && (
         <div className="flex-none w-6 h-6 rounded-full bg-gradient-ox flex items-center justify-center mt-0.5">
-          <span className="text-[8px] font-bold text-white">Ox</span>
+          <Sparkles className="h-3 w-4 text-violet-400" />
         </div>
       )}
 

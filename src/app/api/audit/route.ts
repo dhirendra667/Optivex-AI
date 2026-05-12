@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { runAuditEngine } from "@/lib/audit-engine";
 import { generateAuditSummary } from "@/lib/ai/generate-summary";
 import { AuditRequest, AuditResponse } from "@/types/api";
+import { saveAudit } from "@/lib/db/supabase";
 
 export async function POST(req: NextRequest) {
   try {
@@ -44,6 +45,9 @@ export async function POST(req: NextRequest) {
       executiveSummary,
       strategicNarrative,
     };
+
+    // After assembling result, save
+    await saveAudit(result.id, body.input, result, body.input.companyName, body.input.teamSize);
 
     const response: AuditResponse = {
       success: true,

@@ -6,19 +6,18 @@ import { notFound } from "next/navigation";
 import { AuditDashboard } from "@/components/audit/AuditDashboard";
 import { Navbar } from "@/components/landing/Navbar";
 import { MOCK_AUDIT_RESULT } from "@/lib/charts/chart-data";
+import { getAudit } from "@/lib/db/supabase";
+import { AuditResult } from "@/types/audit"; 
 
 interface PageProps {
   params: { id: string };
 }
 
-// In production: fetch from Supabase
 async function getAuditResult(id: string) {
-  // TODO: const { data } = await supabase.from("audits").select("*").eq("id", id).single();
-  // For now, return mock data for demo
-  if (id === "demo" || id === MOCK_AUDIT_RESULT.id) {
-    return MOCK_AUDIT_RESULT;
-  }
-  return null;
+  if (id === "demo") return MOCK_AUDIT_RESULT;
+  const row = await getAudit(id);        
+  if (!row) return null;
+  return row.result as AuditResult;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

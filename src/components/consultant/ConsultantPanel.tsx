@@ -8,6 +8,7 @@ import { ChatMessage } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
 import { CONSULTANT_INTRO } from "@/lib/ai/prompts";
 import { AuditFormInput } from "@/types/audit";
+import { Sparkles } from "lucide-react"
 
 interface ConsultantPanelProps {
   onReadyForAudit: (data: Partial<AuditFormInput>) => void;
@@ -76,7 +77,7 @@ export function ConsultantPanel({ onReadyForAudit }: ConsultantPanelProps) {
         <div className="relative w-8 h-8">
           <div className="absolute inset-0 rounded-full bg-gradient-ox animate-glow-pulse" />
           <div className="absolute inset-0.5 rounded-full bg-ox-surface-2 flex items-center justify-center">
-            <span className="text-[10px] font-bold gradient-text">Ox</span>
+            <Sparkles className="h-5 w-5 text-violet-400" />
           </div>
         </div>
         <div>
@@ -100,7 +101,7 @@ export function ConsultantPanel({ onReadyForAudit }: ConsultantPanelProps) {
         {isLoading && (
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded-full bg-gradient-ox flex items-center justify-center">
-              <span className="text-[8px] font-bold text-white">Ox</span>
+              <Sparkles className="h-5 w-5 text-violet-400" />
             </div>
             <div className="flex gap-1 px-3 py-2 rounded-xl bg-white/4">
               {[0, 1, 2].map((i) => (

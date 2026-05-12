@@ -13,7 +13,9 @@ if (!process.env.GEMINI_API_KEY) {
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 // gemini-1.5-flash: free tier, fast, 1M token context window
-export const GEMINI_MODEL = "gemini-1.5-flash";
+// export const GEMINI_MODEL = "gemini-1.5-flash";
+   export const GEMINI_MODEL = "gemini-2.0-flash";
+// export const GEMINI_MODEL = "gemini-2.0-flash-lite";
 
 /**
  * Unified call function — same interface as the old callClaude()
@@ -35,10 +37,17 @@ export async function callGemini(params: {
 
   // Convert message history to Gemini's format
   // Gemini uses "model" instead of "assistant"
-  const history = params.messages.slice(0, -1).map((m) => ({
-    role: m.role === "assistant" ? "model" : "user",
-    parts: [{ text: m.content }],
+  // const history = params.messages.slice(0, -1).map((m) => ({
+  //   role: m.role === "assistant" ? "model" : "user",
+  //   parts: [{ text: m.content }],
+  // }));
+  const rawHistory = params.messages.slice(0, -1).map((m) => ({
+  role: m.role === "assistant" ? "model" : "user",
+  parts: [{ text: m.content }],
   }));
+
+  const firstUserIdx = rawHistory.findIndex((m) => m.role === "user");
+  const history = firstUserIdx === -1 ? [] : rawHistory.slice(firstUserIdx);
 
   const lastMessage = params.messages[params.messages.length - 1];
 

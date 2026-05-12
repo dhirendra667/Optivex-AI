@@ -2,6 +2,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { LeadRequest, LeadResponse } from "@/types/api";
+import { saveLead } from "@/lib/db/supabase";
 
 export async function POST(req: NextRequest) {
   try {
@@ -14,12 +15,19 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // In production: save to Supabase + trigger Resend welcome email
-    // For now, log and return success
-    console.log("New lead:", { email: body.email, name: body.name, company: body.company, auditId: body.auditId });
+    // Basic email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(body.email)) {
+      return NextResponse.json<LeadResponse>(
+        { success: false, error: "Invalid email address" },
+        { status: 400 }
+      );
+    }
 
-    // TODO: supabase.from("leads").insert({ email, name, company, audit_id, created_at })
-    // TODO: resend.emails.send({ to: email, subject: "Your Optivex Report", ... })
+    // Save lead to Supabase
+    await saveLead(body.email, body.name, body.company, body.auditId);
+
+    // console.log("Lead saved:", { email: body.email, name: body.name, company: body.company, auditId: body.auditId });
 
     return NextResponse.json<LeadResponse>({ success: true });
   } catch (error) {
