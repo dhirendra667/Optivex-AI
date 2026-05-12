@@ -4,7 +4,7 @@
 
 import { ToolInput, UsageLevel } from "@/types/audit";
 import { KNOWN_TOOLS } from "@/constants/tools";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/helpers";
 
 interface ToolRowProps {
   index: number;
@@ -27,7 +27,7 @@ export function ToolRow({ index, tool, onChange, onRemove, canRemove }: ToolRowP
   );
 
   return (
-    <div className="group grid grid-cols-1 md:grid-cols-[2fr_1fr_0.8fr_0.8fr_1.5fr_auto] gap-2 md:gap-3 p-3 rounded-xl border border-white/5 bg-white/2 hover:border-white/10 transition-all">
+    <div className="group grid grid-cols-1 md:grid-cols-[minmax(180px,2fr)_minmax(120px,1fr)_70px_110px_170px_36px] gap-3 p-3 rounded-xl border border-white/5 bg-white/2 hover:border-white/10 transition-all items-center">
       {/* Tool name with autocomplete hint */}
       <div className="relative">
         <input
@@ -71,37 +71,49 @@ export function ToolRow({ index, tool, onChange, onRemove, canRemove }: ToolRowP
       />
 
       {/* Monthly spend */}
-      <div className="relative">
-        <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-white/30 text-xs">$</span>
+      <div className="relative min-w-[110px]">
+        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30 text-sm">
+          $
+        </span>
+
         <input
           type="number"
           min="0"
           value={tool.monthlySpend}
-          onChange={(e) => onChange({ monthlySpend: parseInt(e.target.value) || 0 })}
-          className="w-full bg-ox-surface-3 border border-white/6 rounded-lg pl-6 pr-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500/40 transition-colors"
+          onChange={(e) =>
+            onChange({ monthlySpend: parseInt(e.target.value) || 0 })
+          }
+          className="w-full bg-ox-surface-3 border border-white/6 rounded-lg pl-7 pr-2 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500/40 transition-colors"
         />
       </div>
 
       {/* Usage level */}
-      <div className="flex gap-1">
+      <div className="grid grid-cols-4 gap-1 min-w-[170px]">
         {USAGE_OPTIONS.map((opt) => (
           <button
             key={opt.value}
             onClick={() => onChange({ usageLevel: opt.value })}
             className={cn(
-              "flex-1 py-2 rounded-lg text-xs font-medium transition-all",
+              "h-11 rounded-lg text-[11px] font-medium transition-all whitespace-nowrap overflow-hidden",
               tool.usageLevel === opt.value
                 ? "text-white"
                 : "text-white/25 hover:text-white/50"
             )}
             style={
               tool.usageLevel === opt.value
-                ? { background: `${opt.color}20`, color: opt.color, border: `1px solid ${opt.color}40` }
-                : { background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.05)" }
+                ? {
+                    background: `${opt.color}20`,
+                    color: opt.color,
+                    border: `1px solid ${opt.color}40`,
+                  }
+                : {
+                    background: "rgba(255,255,255,0.03)",
+                    border: "1px solid rgba(255,255,255,0.05)",
+                  }
             }
             title={opt.label}
           >
-            {opt.label.slice(0, 3)}
+            {opt.label}
           </button>
         ))}
       </div>

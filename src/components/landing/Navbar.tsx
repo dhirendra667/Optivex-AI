@@ -67,7 +67,7 @@ import { Sparkles } from "lucide-react"
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-export default function Navbar() {
+export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {

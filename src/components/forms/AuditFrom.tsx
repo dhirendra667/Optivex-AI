@@ -5,7 +5,7 @@
 import { useState } from "react";
 import { AuditFormInput, GrowthStage, ToolInput } from "@/types/audit";
 import { ToolRow } from "./ToolRow";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/helpers";
 import { KNOWN_TOOLS } from "@/constants/tools";
 
 interface AuditFormProps {
@@ -179,15 +179,27 @@ export function AuditForm({ onSubmit, isLoading }: AuditFormProps) {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-white/50 mb-1.5 uppercase tracking-wide">Industry</label>
+                <label className="block text-xs font-medium text-white/50 mb-1.5 uppercase tracking-wide">
+                  Industry
+                </label>
+
                 <select
                   value={form.industry}
                   onChange={(e) => updateForm({ industry: e.target.value })}
                   className="w-full bg-ox-surface-3 border border-white/8 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500/50 transition-colors appearance-none"
                 >
-                  <option value="">Select industry</option>
+                  <option value="" className="bg-[#0B1120] text-white">
+                    Select industry
+                  </option>
+
                   {INDUSTRIES.map((ind) => (
-                    <option key={ind} value={ind}>{ind}</option>
+                    <option
+                      key={ind}
+                      value={ind}
+                      className="bg-[#0B1120] text-white"
+                    >
+                      {ind}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -231,7 +243,7 @@ export function AuditForm({ onSubmit, isLoading }: AuditFormProps) {
           </div>
         )}
 
-        {/* Step 1: Tools */}
+       {/* Step 1: Tools */}
         {step === 1 && (
           <div className="space-y-4">
             <div>
@@ -240,12 +252,35 @@ export function AuditForm({ onSubmit, isLoading }: AuditFormProps) {
             </div>
 
             {/* Column headers */}
-            <div className="hidden md:grid grid-cols-[2fr_1fr_0.8fr_0.8fr_1.5fr_auto] gap-3 text-xs font-medium text-white/30 uppercase tracking-wide px-1">
+            {/* <div className="hidden md:grid grid-cols-[minmax(220px,2.4fr)_minmax(140px,1.1fr)_80px_100px_minmax(180px,1.5fr)_40px] gap-3 text-xs font-medium text-white/30 uppercase tracking-wide px-1">
               <span>Tool Name</span>
               <span>Tier/Plan</span>
               <span>Seats</span>
               <span>$/Month</span>
               <span>Usage</span>
+              <span />
+            </div> */}
+            {/* Column headers */}
+            <div className="hidden md:grid grid-cols-[minmax(180px,2fr)_minmax(120px,1fr)_70px_110px_170px_36px] gap-3 text-xs font-medium text-white/30 uppercase tracking-wide px-1">
+              <span className="pl-1">
+                Tool Name
+              </span>
+              <span className="pl-2">
+                Tier/Plan
+              </span>
+
+              <span className="text-center">
+                Seats
+              </span>
+
+              <span className="text-center pl-1">
+                $/Month
+              </span>
+
+              <span className="pl-3">
+                Usage
+              </span>
+
               <span />
             </div>
 
@@ -289,7 +324,6 @@ export function AuditForm({ onSubmit, isLoading }: AuditFormProps) {
             </div>
           </div>
         )}
-
         {/* Step 2: Context */}
         {step === 2 && (
           <div className="space-y-5">

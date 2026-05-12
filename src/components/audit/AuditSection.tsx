@@ -4,6 +4,9 @@
 
 import { useState } from "react";
 import { AuditForm } from "@/components/forms/AuditFrom";
+import { ConsultantPanel } from "@/components/consultant/ConsultantPanel";
+import { AuditDashboard } from "@/components/audit/AuditDashboard";
+import { LeadCaptureModal } from "@/components/lead-capture/LeadCaptureModal";
 import { AuditFormInput, AuditResult } from "@/types/audit";
 import { cn } from "@/lib/utils/helpers";
 
@@ -71,7 +74,9 @@ export function AuditSection() {
             {mode === "form" ? (
               <AuditForm onSubmit={runAudit} isLoading={isLoading} />
             ) : (
-              "consult"
+              <ConsultantPanel
+                onReadyForAudit={() => setMode("form")}
+              />
             )}
 
             {error && <ErrorBanner message={error} />}
@@ -92,10 +97,26 @@ export function AuditSection() {
               </button>
             </div>
 
+            <AuditDashboard
+              result={auditResult}
+              onCaptureLead={!leadCaptured ? () => setShowLeadModal(true) : undefined}
+            />
           </div>
         </section>
       )}
 
+      {/* ── Lead capture modal ────────────────────────────────────────────── */}
+      {showLeadModal && (
+        <LeadCaptureModal
+          auditId={auditResult?.id}
+          annualSavings={auditResult?.annualPotentialSavings}
+          onClose={() => setShowLeadModal(false)}
+          onSuccess={() => {
+            setShowLeadModal(false);
+            setLeadCaptured(true);
+          }}
+        />
+      )}
     </>
   );
 }
