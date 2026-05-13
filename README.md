@@ -10,9 +10,19 @@ Optivex AI helps startup founders and engineering managers find out if they're o
 
 ## Screenshots
 
-> _I have to Add 3 screenshots or a Loom/YouTube link here before submitting_
->
-> Suggested: (1) Landing page hero, (2) Chat consultant in action, (3) Audit results dashboard
+## Screenshots
+
+### Landing Page
+![Landing Page](./public/screenshots/landing.png)
+
+### structured form
+![Form](./public/screenshots/form.png)
+
+### Audit Dashboard
+![Audit Dashboard](./public/screenshots/auditresult1.png)
+![Audit Dashboard](./public/screenshots/auditresult2.png)
+![Audit Dashboard](./public/screenshots/auditresult3.png)
+![Audit Dashboard](./public/screenshots/auditresult4.png)
 
 ---
 
