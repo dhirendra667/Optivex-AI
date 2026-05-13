@@ -10,8 +10,6 @@ Optivex AI helps startup founders and engineering managers find out if they're o
 
 ## Screenshots
 
-## Screenshots
-
 ### Landing Page
 ![Landing Page](./public/screenshots/landing.png)
 
