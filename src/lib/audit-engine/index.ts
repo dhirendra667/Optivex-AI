@@ -8,12 +8,12 @@ import { generateRecommendations } from "./recommendations";
 import { TOOL_COLORS } from "@/constants/tools";
 import { nanoid } from "@/lib/utils/helpers";
 
-const VERDICT_COLORS: Record<ToolAnalysis["verdict"], string> = {
-  keep: "#22C55E",
-  optimize: "#F59E0B",
-  replace: "#F97316",
-  eliminate: "#EF4444",
-};
+// const VERDICT_COLORS: Record<ToolAnalysis["verdict"], string> = {
+//   keep: "#22C55E",
+//   optimize: "#F59E0B",
+//   replace: "#F97316",
+//   eliminate: "#EF4444",
+// };
 
 export function runAuditEngine(input: AuditFormInput): Omit<AuditResult, "executiveSummary" | "strategicNarrative"> {
   const { tools } = input;

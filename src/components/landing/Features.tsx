@@ -88,7 +88,7 @@ export function Features() {
             Intelligence, not a calculator.
           </h2>
           <p className="text-white/50 text-lg max-w-xl mx-auto leading-relaxed">
-            Optivex doesn't just add up your subscriptions. It understands what
+            Optivex doesn&apos;t just add up your subscriptions. It understands what
             each tool does, how your team uses it, and what you actually need.
           </p>
         </div>

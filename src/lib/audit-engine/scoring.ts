@@ -41,8 +41,8 @@ export function computeStackHealthScore(params: {
   // Coverage: are the main use-cases covered without duplication?
   // Simplified: fewer tools = higher coverage score (consolidation is good)
   const toolCount = input.tools.length;
-  const teamSize = input.teamSize;
-  const toolsPerPerson = toolCount / Math.max(teamSize, 1);
+  // const teamSize = input.teamSize;
+  // const toolsPerPerson = toolCount / Math.max(teamSize, 1);
   // Ideal is 2–5 tools for a team; >8 tools suggests sprawl
   const coverageScore =
     toolCount <= 3

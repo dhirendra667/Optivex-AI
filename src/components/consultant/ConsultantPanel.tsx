@@ -57,7 +57,7 @@ export function ConsultantPanel({ onReadyForAudit }: ConsultantPanelProps) {
           onReadyForAudit(data.extracted);
         }
       }
-    } catch (err) {
+    } catch {
       setMessages((prev) => [
         ...prev,
         {

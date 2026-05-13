@@ -40,7 +40,7 @@ export function generateRecommendations(params: {
         action: { label: "Review overlap" },
       });
     } else if (r.type === "underutilization") {
-      const tool = input.tools.find((t) => t.name === r.tools[0]);
+      // const tool = input.tools.find((t) => t.name === r.tools[0]);
       recs.push({
         id: nanoid(),
         priority: "high",

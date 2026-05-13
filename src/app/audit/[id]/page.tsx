@@ -8,6 +8,7 @@ import { Navbar } from "@/components/landing/Navbar";
 import { MOCK_AUDIT_RESULT } from "@/lib/charts/chart-data";
 import { getAudit } from "@/lib/db/supabase";
 import { AuditResult } from "@/types/audit"; 
+import Link from "next/link"
 
 interface PageProps {
   params: { id: string };
@@ -50,9 +51,9 @@ export default async function AuditResultPage({ params }: PageProps) {
             </svg>
             <p className="text-sm text-blue-300/80">
               This is a shared audit report.{" "}
-              <a href="/" className="underline hover:text-blue-200 transition-colors">
+              <Link href="/" className="underline hover:text-blue-200 transition-colors">
                 Run your own free audit →
-              </a>
+              </Link>
             </p>
           </div>
 

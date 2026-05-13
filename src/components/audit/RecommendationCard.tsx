@@ -3,7 +3,7 @@
 // ─── components/audit/RecommendationCard.tsx ───────────────────────────────
 
 import { Recommendation } from "@/types/audit";
-import { priorityConfig, formatCurrency, cn } from "@/lib/utils/helpers";
+import { priorityConfig, formatCurrency } from "@/lib/utils/helpers";
 
 const TYPE_ICONS: Record<string, string> = {
   eliminate: "🗑️",

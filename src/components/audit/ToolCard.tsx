@@ -3,7 +3,7 @@
 // ─── components/audit/ToolCard.tsx ─────────────────────────────────────────
 
 import { ToolAnalysis } from "@/types/audit";
-import { verdictConfig, formatCurrency, cn } from "@/lib/utils/helpers";
+import { verdictConfig, formatCurrency } from "@/lib/utils/helpers";
 import { TOOL_COLORS } from "@/constants/tools";
 
 interface ToolCardProps {

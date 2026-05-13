@@ -49,7 +49,7 @@ export function HowItWorks() {
           <div className="absolute left-[28px] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/8 to-transparent hidden md:block" />
 
           <div className="space-y-6">
-            {STEPS.map((step, i) => (
+            {STEPS.map((step) => (
               <div
                 key={step.number}
                 className="group flex gap-6 md:gap-10 items-start"

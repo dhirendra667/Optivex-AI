@@ -133,7 +133,7 @@ function SectionHeader() {
         Analyze your AI stack now.
       </h2>
       <p className="text-white/50 max-w-xl mx-auto">
-        Choose how you'd like to share your stack — structured form or a quick
+        Choose how you&apos;d like to share your stack — structured form or a quick
         conversation with our AI consultant.
       </p>
     </div>

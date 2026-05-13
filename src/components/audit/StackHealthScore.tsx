@@ -57,7 +57,7 @@ function ScoreRing({ score, size = 120 }: { score: number; size?: number }) {
 
 function SubScore({ label, score }: { label: string; score: number }) {
   const { color } = scoreToLabel(score);
-  const isInverse = label === "Redundancy"; // higher redundancy = worse
+  // const isInverse = label === "Redundancy"; // higher redundancy = worse
 
   return (
     <div className="flex items-center justify-between py-2">

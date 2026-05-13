@@ -3,7 +3,7 @@
 // ─── components/lead-capture/LeadCaptureModal.tsx ──────────────────────────
 
 import { useState } from "react";
-import { cn } from "@/lib/utils/helpers";
+// import { cn } from "@/lib/utils/helpers";
 
 interface LeadCaptureModalProps {
   auditId?: string;
@@ -83,7 +83,7 @@ export function LeadCaptureModal({
           </h3>
           {annualSavings && annualSavings > 0 ? (
             <p className="text-sm text-white/50">
-              We've identified{" "}
+              We&apos;ve identified{" "}
               <span className="text-teal-400 font-semibold">
                 ${annualSavings.toLocaleString()}/yr
               </span>{" "}
